@@ -2,6 +2,7 @@ name: Fetch NSE Data Daily
 
 on:
   schedule:
+    # 7:00 PM IST is 1:30 PM (13:30) UTC. Runs Monday through Friday.
     - cron: '30 13 * * 1-5' 
   workflow_dispatch: 
 
@@ -11,11 +12,9 @@ jobs:
     permissions:
       contents: write
     steps:
-      # UPGRADED TO v4
       - uses: actions/checkout@v4
       
       - name: Set up Python
-        # UPGRADED TO v5
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
