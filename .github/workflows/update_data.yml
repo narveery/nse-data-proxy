@@ -30,5 +30,10 @@ jobs:
           git config --global user.name "GitHub Action Bot"
           git config --global user.email "action@github.com"
           git add nse_data.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update NSE data"
-          git push
+          
+          # Only commit, pull, and push if changes actually exist
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "Auto-update NSE data"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
