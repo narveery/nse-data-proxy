@@ -2,8 +2,9 @@ name: Fetch NSE Data Daily
 
 on:
   schedule:
-    # 7:00 PM IST is 1:30 PM (13:30) UTC. Runs Monday through Friday.
-    - cron: '30 13 * * 1-5' 
+    # 7:12 PM IST is 1:42 PM (13:42) UTC. 
+    # Shifted to an odd minute (:42) to completely bypass GitHub peak traffic queues.
+    - cron: '42 13 * * 1-5'
   workflow_dispatch: 
 
 jobs:
